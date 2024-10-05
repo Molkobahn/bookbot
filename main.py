@@ -9,11 +9,13 @@ def main():
 
 def get_num_char(lowered_text):
     char_dict = {}
+    
     for letter in lowered_text:
-        if letter in char_dict:
-            char_dict[letter] += 1
-        else:
-            char_dict[letter] = 1
+        if letter.isalpha():
+            if letter in char_dict:
+                char_dict[letter] += 1
+            else:
+                char_dict[letter] = 1
     return char_dict
 
 def get_num_words(text):
