@@ -7,17 +7,13 @@ def main():
     character_dict.sort(reverse=True, key=sort_on)
     print_report(num_words, character_dict)
     
+def get_book_text(path):
+    with open(path) as f:
+        return f.read()
 
-def sort_on(character_dict):
-    return character_dict["num"]
-
-def dict_list(char_count):
-    list_of_dict = []
-    for character in char_count:
-        num = char_count[character]
-        new_dict = {"character" : character, "num" : num}
-        list_of_dict.append(new_dict)
-    return list_of_dict
+def count_words_in_text(text):
+    words = text.split()
+    return len(words)
 
 def count_characters(text, count_all=False):
     char_dict = {}
@@ -29,14 +25,16 @@ def count_characters(text, count_all=False):
                 char_dict[letter] = 1
     return char_dict
 
-def count_words_in_text(text):
-    words = text.split()
-    return len(words)
-          
-          
-def get_book_text(path):
-    with open(path) as f:
-        return f.read()
+def dict_list(char_count):
+    list_of_dict = []
+    for character in char_count:
+        num = char_count[character]
+        new_dict = {"character" : character, "num" : num}
+        list_of_dict.append(new_dict)
+    return list_of_dict
+
+def sort_on(character_dict):
+    return character_dict["num"]
 
 def print_report(num_words, character_dict):
     print("--- Begin report of books/frankenstein.txt ---")
